@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Atendimento</title>
+    <style type="text/css">
+        .errorlist{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    {% if user.is_authenticated %}
+
+        <h1>Adicionar Atendimento</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Adicionar Atendimento</button>
+        </form>
+    {% else %}
+        <h1>Você não está autenticado e não pode visualizar a página</h1>
+    <p>para autenticar <a href='/conta/login/'>clique aqui</a></p>
+    {%endif%}
+</body>
+</html>

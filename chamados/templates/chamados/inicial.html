@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicial</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        Olá {{ user.username }} seja bem vindo.
+        <a href="{% url 'logout' %}"> Sair </a>
+    {% endif %}
+    <h1>Sistema de Chamados da FC Solutions</h1>
+    <a href="{% url 'chamados'%}"><input type="button" value="Chamados"></a>
+    <a href="{% url 'add_chamado'%}"><input type="button" value="Adicionar chamado"></a>
+    <a href="{% url 'add_atendimento'%}"><input type="button" value="Adicionar atendimento"></a>
+</body>
+</html>

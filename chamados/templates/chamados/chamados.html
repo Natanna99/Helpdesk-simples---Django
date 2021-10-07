@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicial</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        Olá {{ user.username }} seja bem vindo.
+        <a href="{% url 'logout' %}"> Sair </a>
+    {% endif %}
+    <h1>Sistema de Chamados da FC Solutions</h1>
+    <table border=1>
+        <tr>
+            <th>Codigo</th>
+            <th>Descrição</th>
+            <th>data de abertura</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+        {% for chamado in chamados %}
+            <tr>
+                <td>{{ chamado.id }}</td>
+                <td>{{chamado.descricao }}</td>
+                <td>{{chamado.data_abertura}}</td>
+                <td>{{chamado.status.nome}}</td>
+                <td><a href="{% url 'detalhes' chamado.id %}">Detalhes</a></td>
+            </tr>
+        {% endfor %}
+
+    </table>
+    <a href="{% url 'inicial'%}"><input type="button" value="Inicio"></a>
+</body>
+</html>
